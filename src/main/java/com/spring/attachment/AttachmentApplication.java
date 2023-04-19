@@ -1,5 +1,6 @@
 package com.spring.attachment;
 
+import com.spring.attachment.utility.EmailAttachmentService;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +12,7 @@ import org.springframework.context.event.EventListener;
 public class AttachmentApplication
 {
 	@Autowired
-	private EmailSenderService emailSenderService;
+	private EmailAttachmentService emailAttachmentService;
 
 	public static void main(String[] args)
 	{
@@ -19,7 +20,7 @@ public class AttachmentApplication
 	}
 	@EventListener(ApplicationReadyEvent.class)
 	public void triggerEmail() throws MessagingException {
-		emailSenderService.sendMailWithAttachment("vickyshanehunter@gmail.com","This Is Body of Mail With Some Attachment","Mail Attach Regarding...","C:\\Users\\T50366\\Desktop\\LEARNINGS\\ABSTRACTION-THEORY.txt");
+		emailAttachmentService.sendMailWithAttachment("vickyshanehunter@gmail.com","This Is Body of Mail With Some Attachment","Mail Attach Regarding...","C:\\Users\\T50366\\Desktop\\LEARNINGS\\ABSTRACTION-THEORY.txt");
 
 	}
 
